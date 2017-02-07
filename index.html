@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>What To Cook?</title>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+      }
+      /* HTML5 display-role reset for older browsers */
+      article, aside, details, figcaption, figure,
+      footer, header, hgroup, menu, nav, section {
+            display: block;
+      }
+      body{
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+      }
+      h1{
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 32px;
+      }
+      .flex-container{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            width: 100%;
+            height: 250px;
+      }
+      .flex-item{
+            display: flex;
+            width: 43%;
+            height: 100%;
+            border: 1px solid lightgrey;
+            margin: 20px;
+      }
+      .r-data-left,
+      .r-data-right{
+            display: inline-block;
+            position: relative;
+            height: 250px;
+      }
+      .r-data-left{
+            width: 40%;
+      }
+      .r-data-right{
+            width: 60%;
+            padding: 10px;
+            overflow-x: none;
+            overflow-y: scroll;
+      }
+      .r-img{
+            width: 100%;
+            height: 100%;
+            border: none;
+      }
+      .r-title{
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+      }
+      .r-ingredients,
+      .r-servings,
+      .r-source,
+      .text{
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+      }
+      .text{
+            font-weight: 500;
+            display: inline-block;
+      }
+      .r-ingredients{
+            padding: 5px;
+      }
+      #template{
+            display: none;
+      }
+      .item-list{
+            margin-left: 15px;
+      }
+      .source-text{
+            margin-left: 40px;
+      }
+      .main-container{
+            margin: 20px;
+      }
+
+</style>
+</head>
+<body>
+    <h1>What should I cook?</h1>
+    <div id="parameter-container" class="container">
+        <div class="row">
+            <!-- Search -->
+            <div class="col-sm-12 col-md-6">
+                <div class="input-group searchinput" >
+                    <input id="searchterm" type="text" class="form-control" placeholder="Recipe Keyword..." data-toggle="popover" data-container="body" data-placement="bottom" data-content="A search term is required!!" required />
+                    <span class="input-group-btn">
+                        <button id="search" class="btn btn-default" type="button">Search</button>
+                  </span>
+            </div><!-- /input-group -->
+      </div>
+
+      <div class="col-sm-12 col-md-3">
+             <!-- Split button -->
+             <div class="btn-group">
+                 <button type="button" class="btn btn-default"><span id="healthtext">Health Restrictions</span></button>
+                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <span class="caret"></span>
+                     <span class="sr-only">Toggle Dropdown</span>
+               </button>
+               <ul class="dropdown-menu">
+                     <li><a class="dditem" href="#">Alcohol-free</a></li>
+                     <li><a class="dditem" href="#">Celery-free</a></li>
+                     <li><a class="dditem" href="#">Crustcean-free</a></li>
+                     <li><a class="dditem" href="#">Dairy-free</a></li>
+                     <li><a class="dditem" href="#">Eggs-free</a></li>
+                     <li><a class="dditem" href="#">Fish-free</a></li>
+                     <li><a class="dditem" href="#">Gluten-free</a></li>
+                     <li><a class="dditem" href="#">Kidney-friendly</a></li>
+                     <li><a class="dditem" href="#">Low-potassium</a></li>
+                     <li><a class="dditem" href="#">Lupine-free</a></li>
+                     <li><a class="dditem" href="#">Mustard-free</a></li>
+                     <li><a class="dditem" href="#">Low-fat-abs</a></li>
+                     <li><a class="dditem" href="#">No-oil-added</a></li>
+                     <li><a class="dditem" href="#">Paleo</a></li>
+                     <li><a class="dditem" href="#">Peanut-free</a></li>
+                     <li><a class="dditem" href="#">Pecatarian</a></li>
+                     <li><a class="dditem" href="#">Pork-free</a></li>
+                     <li><a class="dditem" href="#">Red-meat-free</a></li>
+                     <li><a class="dditem" href="#">Sesame-free</a></li>
+                     <li><a class="dditem" href="#">Shellfish-free</a></li>
+                     <li><a class="dditem" href="#">Soy-free</a></li>
+                     <li><a class="dditem" href="#">Sugar-conscious</a></li>
+                     <li><a class="dditem" href="#">Tree-nut-free</a></li>
+                     <li><a class="dditem" href="#">Vegan</a></li>
+                     <li><a class="dditem" href="#">Vegetarian</a></li>
+                     <li><a class="dditem" href="#">Wheat-free</a></li>
+               </ul>
+         </div>
+      </div>
+
+      <div class="col-sm-12 col-md-3">
+                <!-- Split button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default"><span id="diettext">Diet Restrictions</span></button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                        <li><a class="otherdditem" href="#">Balanced</a></li>
+                        <li><a class="otherdditem" href="#">High-fiber</a></li>
+                        <li><a class="otherdditem" href="#">High-protein</a></li>
+                        <li><a class="otherdditem" href="#">Low-carb</a></li>
+                        <li><a class="otherdditem" href="#">Low-fat</a></li>
+                        <li><a class="otherdditem" href="#">Low-sodium</a></li>
+                  </ul>
+            </div>
+      </div>
+</div>
+</div>
+      <div class="fluid-container main-container">
+           <div class="flex-container">
+               <div class="flex-item" id="template">
+                        <div class="r-data-left">
+                             <img src="" alt="" class="r-img">
+                       </div>
+                       <div class="r-data-right">
+                             <h2 class="r-title"></h2>
+                             <p class="r-ingredients"></p>
+                             <p class="text">Serves:&nbsp;</p><span class="r-servings"></span>
+                             <p class="text source-text">Source: &nbsp;</p><a href="#" class="link" target="_blank"><span class="r-source"></span></a>
+                       </div>
+                 </div>
+            </div>
+      </div>
+
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+<script>
+
+//Pulls recipe objects from main objects in the json
+function generateRecipes(arr){
+    var recipes = [];
+    for(obj in arr){
+        recipes.push(arr[obj].recipe);
+  }
+  return recipes;
+}
+
+function generateList(ingredients){
+      var count = 0;
+      var list = ['<ol class="item-list">'];
+      for(items in ingredients){
+            list.push('<li>' + ingredients[items] + '</li>');
+      }
+      list.push('</ol>');
+      list = list.join('');
+      return list;
+}
+
+//Targets the document elements and inserts data
+function pushToDom(recArr){
+      console.log(recArr);
+    for(recipes in recArr){
+              var newRecipe = $('#template').clone();
+              newRecipe.find('.r-title').html(recArr[recipes].label);
+              newRecipe.find('.r-img').attr('src', recArr[recipes].image);
+              newRecipe.find('.r-img').attr('alt', recArr[recipes].label);
+              newRecipe.find('.r-ingredients').html(generateList(recArr[recipes].ingredientLines));
+              newRecipe.find('.r-servings').html(recArr[recipes].yield);
+              newRecipe.find('.link').attr('href', recArr[recipes].url);
+              newRecipe.find('.r-source').html(recArr[recipes].source);
+              newRecipe.prependTo('.flex-container');
+              newRecipe.css('display', 'flex');
+                // hlabels = recArr[recipes].healthLabels;
+                // dlabels = recArr[recipes].dietLabels;
+          }
+    }
+
+
+
+    $(document).ready(function(){
+       var searchBut = $('#search');
+
+        //Used JS methods on healthText and dietText because I had to use innerHTML to update text, not sure why html() or text() werent working using jquery
+        var healthText = $('#healthtext');
+        var dietText = $('#diettext');
+        var healthdditem = $('.dditem');
+        var dietdditem = $('.otherdditem');
+        var healthRestrict = '&health=';
+        var dietRestrict = '&diet=';
+
+
+        //Takes care of switching the dropdown menu text as well as completing the health or diet restriction piece of the url
+        healthdditem.click(function(){
+              healthText.html(this.innerHTML);
+              healthRestrict += this.innerHTML.toLowerCase();
+        });
+
+        dietdditem.click(function(){
+              diettext.html(this.innerHTML);
+              dietRestrict += this.innerHTML.toLowerCase();
+        });
+
+        //Initializes the function for the popover to work
+        $('[data-toggle="popover"]').popover('hide');
+
+        ///This function gets executred when the Search button is pushed
+        searchBut.click(function(){
+            var url = "https://api.edamam.com/search?api_id=bc8cbf59&api_key=ecf7fb85c3b186ae3ea428fbc209fa4c&q=";
+              var searchTerm = $('#searchterm').val();
+              if(searchTerm === ''){
+                  $('[data-toggle="popover"]').popover('show');
+                  }
+                  else{
+                        $('[data-toggle="popover"]').popover('hide');
+                  }
+                //If no health restriction replace with empty string
+                healthRestrict === '&health=' ? healthRestrict = '' : healthRestrict = healthRestrict;
+                //If no diet restriction replace with empty string
+                dietRestrict === '&diet=' ? dietRestrict = '' : dietRestrict = dietRestrict;
+                //Construct api url
+                url = url + searchTerm + healthRestrict + dietRestrict;
+
+                $.ajax({
+                        url: url,
+                        method: 'GET',
+                  }).done(function(result) {
+
+                        //Get the objects that contain the recipes which are under the hits node
+                        var data = result.hits;
+                        //Get recipes with for in loop in generate recips
+                        var myRecipes = generateRecipes(data);
+                        pushToDom(myRecipes);
+
+                  }).fail(function(err) {
+                        throw err;
+                  });
+            });
+  });
+</script>
+
+</body>
+
+</html>
