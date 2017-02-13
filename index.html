@@ -123,75 +123,77 @@
     <h1>What should I cook?</h1>
     <div id="parameter-container" class="container">
         <div class="row">
-            <!-- Search -->
-            <div class="col-sm-12 col-md-6">
-                <div class="input-group searchinput" >
-                    <input id="searchterm" type="text" class="form-control" placeholder="Recipe Keyword..." data-toggle="popover" data-container="body" data-placement="bottom" data-content="A search term is required!!" required />
-                    <span class="input-group-btn">
-                        <button id="search" class="btn btn-default" type="button">Search</button>
-                  </span>
-            </div><!-- /input-group -->
-      </div>
+                  <div class="col-sm-12 col-md-3">
+                               <!-- Split button -->
+                               <div class="btn-group">
+                                     <button type="button" class="btn btn-default"><span id="healthtext">Health Restrictions</span></button>
+                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       <span class="caret"></span>
+                                             <span class="sr-only">Toggle Dropdown</span>
+                                       </button>
+                                       <ul class="dropdown-menu">
+                                             <li><a class="dditem" href="#">Alcohol-free</a></li>
+                                             <li><a class="dditem" href="#">Celery-free</a></li>
+                                             <li><a class="dditem" href="#">Crustcean-free</a></li>
+                                             <li><a class="dditem" href="#">Dairy-free</a></li>
+                                             <li><a class="dditem" href="#">Eggs-free</a></li>
+                                             <li><a class="dditem" href="#">Fish-free</a></li>
+                                             <li><a class="dditem" href="#">Gluten-free</a></li>
+                                             <li><a class="dditem" href="#">Kidney-friendly</a></li>
+                                             <li><a class="dditem" href="#">Low-potassium</a></li>
+                                             <li><a class="dditem" href="#">Lupine-free</a></li>
+                                             <li><a class="dditem" href="#">Mustard-free</a></li>
+                                             <li><a class="dditem" href="#">Low-fat-abs</a></li>
+                                             <li><a class="dditem" href="#">No-oil-added</a></li>
+                                             <li><a class="dditem" href="#">Paleo</a></li>
+                                             <li><a class="dditem" href="#">Peanut-free</a></li>
+                                             <li><a class="dditem" href="#">Pecatarian</a></li>
+                                             <li><a class="dditem" href="#">Pork-free</a></li>
+                                             <li><a class="dditem" href="#">Red-meat-free</a></li>
+                                             <li><a class="dditem" href="#">Sesame-free</a></li>
+                                             <li><a class="dditem" href="#">Shellfish-free</a></li>
+                                             <li><a class="dditem" href="#">Soy-free</a></li>
+                                             <li><a class="dditem" href="#">Sugar-conscious</a></li>
+                                             <li><a class="dditem" href="#">Tree-nut-free</a></li>
+                                             <li><a class="dditem" href="#">Vegan</a></li>
+                                             <li><a class="dditem" href="#">Vegetarian</a></li>
+                                             <li><a class="dditem" href="#">Wheat-free</a></li>
+                                       </ul>
+                           </div>
+                  </div>
 
-      <div class="col-sm-12 col-md-3">
-             <!-- Split button -->
-             <div class="btn-group">
-                 <button type="button" class="btn btn-default"><span id="healthtext">Health Restrictions</span></button>
-                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <span class="caret"></span>
-                     <span class="sr-only">Toggle Dropdown</span>
-               </button>
-               <ul class="dropdown-menu">
-                     <li><a class="dditem" href="#">Alcohol-free</a></li>
-                     <li><a class="dditem" href="#">Celery-free</a></li>
-                     <li><a class="dditem" href="#">Crustcean-free</a></li>
-                     <li><a class="dditem" href="#">Dairy-free</a></li>
-                     <li><a class="dditem" href="#">Eggs-free</a></li>
-                     <li><a class="dditem" href="#">Fish-free</a></li>
-                     <li><a class="dditem" href="#">Gluten-free</a></li>
-                     <li><a class="dditem" href="#">Kidney-friendly</a></li>
-                     <li><a class="dditem" href="#">Low-potassium</a></li>
-                     <li><a class="dditem" href="#">Lupine-free</a></li>
-                     <li><a class="dditem" href="#">Mustard-free</a></li>
-                     <li><a class="dditem" href="#">Low-fat-abs</a></li>
-                     <li><a class="dditem" href="#">No-oil-added</a></li>
-                     <li><a class="dditem" href="#">Paleo</a></li>
-                     <li><a class="dditem" href="#">Peanut-free</a></li>
-                     <li><a class="dditem" href="#">Pecatarian</a></li>
-                     <li><a class="dditem" href="#">Pork-free</a></li>
-                     <li><a class="dditem" href="#">Red-meat-free</a></li>
-                     <li><a class="dditem" href="#">Sesame-free</a></li>
-                     <li><a class="dditem" href="#">Shellfish-free</a></li>
-                     <li><a class="dditem" href="#">Soy-free</a></li>
-                     <li><a class="dditem" href="#">Sugar-conscious</a></li>
-                     <li><a class="dditem" href="#">Tree-nut-free</a></li>
-                     <li><a class="dditem" href="#">Vegan</a></li>
-                     <li><a class="dditem" href="#">Vegetarian</a></li>
-                     <li><a class="dditem" href="#">Wheat-free</a></li>
-               </ul>
-         </div>
-      </div>
+                  <div class="col-sm-12 col-md-3">
+                      <!-- Split button -->
+                      <div class="btn-group">
+                              <button type="button" class="btn btn-default"><span id="diettext">Diet Restrictions</span></button>
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <span class="caret"></span>
+                              <span class="sr-only">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                    <li><a class="otherdditem" href="#">Balanced</a></li>
+                                    <li><a class="otherdditem" href="#">High-fiber</a></li>
+                                    <li><a class="otherdditem" href="#">High-protein</a></li>
+                                    <li><a class="otherdditem" href="#">Low-carb</a></li>
+                                    <li><a class="otherdditem" href="#">Low-fat</a></li>
+                                    <li><a class="otherdditem" href="#">Low-sodium</a></li>
+                              </ul>
+                        </div>
+                  </div>
+                  <!-- Search -->
+                  <div class="col-sm-12 col-md-6">
+                      <div class="input-group searchinput" >
+                                <input id="searchterm" type="text" class="form-control" placeholder="Recipe Keyword..." data-toggle="popover" data-container="body" data-placement="bottom" data-content="A search term is required!!" required />
+                                <span class="input-group-btn">
+                                    <button id="search" class="btn btn-default" type="button">Search</button>
+                              </span>
+                        </div><!-- /input-group -->
+                  </div>
 
-      <div class="col-sm-12 col-md-3">
-                <!-- Split button -->
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default"><span id="diettext">Diet Restrictions</span></button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu">
-                        <li><a class="otherdditem" href="#">Balanced</a></li>
-                        <li><a class="otherdditem" href="#">High-fiber</a></li>
-                        <li><a class="otherdditem" href="#">High-protein</a></li>
-                        <li><a class="otherdditem" href="#">Low-carb</a></li>
-                        <li><a class="otherdditem" href="#">Low-fat</a></li>
-                        <li><a class="otherdditem" href="#">Low-sodium</a></li>
-                  </ul>
+                  
             </div>
-      </div>
-</div>
-</div>
+    </div>
+
       <div class="fluid-container main-container">
            <div class="flex-container">
                <div class="flex-item" id="template">
@@ -277,29 +279,22 @@ function pushToDom(recArr){
         });
 
         dietdditem.click(function(){
-              diettext.html(this.innerHTML);
+              dietText.html(this.innerHTML);
               dietRestrict += this.innerHTML.toLowerCase();
         });
-
-        //Initializes the function for the popover to work
-        $('[data-toggle="popover"]').popover('hide');
 
         ///This function gets executred when the Search button is pushed
         searchBut.click(function(){
             var url = "https://api.edamam.com/search?api_id=bc8cbf59&api_key=ecf7fb85c3b186ae3ea428fbc209fa4c&q=";
               var searchTerm = $('#searchterm').val();
-              if(searchTerm === ''){
-                  $('[data-toggle="popover"]').popover('show');
-                  }
-                  else{
-                        $('[data-toggle="popover"]').popover('hide');
-                  }
+
                 //If no health restriction replace with empty string
                 healthRestrict === '&health=' ? healthRestrict = '' : healthRestrict = healthRestrict;
                 //If no diet restriction replace with empty string
                 dietRestrict === '&diet=' ? dietRestrict = '' : dietRestrict = dietRestrict;
                 //Construct api url
                 url = url + searchTerm + healthRestrict + dietRestrict;
+                console.log(url);
 
                 $.ajax({
                         url: url,

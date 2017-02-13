@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>What To Cook?</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+	<h1 class="header">What to Cook?</h1>
+	<div class="top-flex">
+		<div class="top-flex-item">
+			<input type="text" placeholder="keyword" id="searchword">
+		</div>
+		<div class="top-flex-item">
+			<div class="dropdown">
+				<button class="dropdown-button health-button"><span id="health-text">Health Restrictions</span> &darr;</button>
+				<div class="dropdown-content js-health">
+					<div class="dropdown-item">None</div>
+					<div class="dropdown-item">Alcohol-free</div>
+					<div class="dropdown-item">Celery-free</div>
+					<div class="dropdown-item">Crustcean-free</div>
+					<div class="dropdown-item">Dairy-free</div>
+					<div class="dropdown-item">Eggs-free</div>
+					<div class="dropdown-item">Fish-free</div>
+					<div class="dropdown-item">Gluten-free</div>
+					<div class="dropdown-item">Kidney-friendly</div>
+					<div class="dropdown-item">Low-potassium</div>
+					<div class="dropdown-item">Lupine-free</div>
+					<div class="dropdown-item">Mustard-free</div>
+					<div class="dropdown-item">Low-fat-abs</div>
+					<div class="dropdown-item">No-oil-added</div>
+					<div class="dropdown-item">Paleo</div>
+					<div class="dropdown-item">Peanut-free</div>
+					<div class="dropdown-item">Pecatarian</div>
+					<div class="dropdown-item">Pork-free</div>
+					<div class="dropdown-item">Red-meat-free</div>
+					<div class="dropdown-item">Sesame-free</div>
+					<div class="dropdown-item">Shellfish-free</div>
+					<div class="dropdown-item">Soy-free</div>
+					<div class="dropdown-item">Sugar-conscious</div>
+					<div class="dropdown-item">Tree-nut-free</div>
+					<div class="dropdown-item">Vegan</div>
+					<div class="dropdown-item">Vegetarian</div>
+					<div class="dropdown-item">Wheat-free</div>
+				</div>
+			</div>
+		</div>
+		<div class="top-flex-item">
+			<div class="dropdown">
+				<button class="dropdown-button diet-button"><span id="diet-text">Diet Restrictions</span> &darr;</button>
+				<div class="dropdown-content js-diet">
+					<div class="dropdown-item">Balanced</div>
+					<div class="dropdown-item">High-fiber</div>
+					<div class="dropdown-item">High-protein</div>
+					<div class="dropdown-item">Low-carb</div>
+					<div class="dropdown-item">Low-fat</div>
+					<div class="dropdown-item">Low-sodium</div>
+				</div>
+			</div>
+		</div>
+		<div class="top-flex-item">
+			<button class="search-button" id="search">Search</button>
+		</div>
+	</div>
+
+	<!-- Main Content
+	<div class="main-container">
+		<div class="flex-container">
+			<div class="flex-item template">
+				<div class="r-data-left">
+					<img src="" alt="" class="r-img">
+				</div>
+				<div class="r-data-right">
+					<h2 class="r-title"></h2>
+					<p class="r-ingredients"></p>
+					<p class="text">Serves:&nbsp;</p><span class="r-servings"></span>
+					<p class="text source-text">Source: &nbsp;</p><a href="#" class="link" target="_blank"><span class="r-source"></span></a>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+
+	<div class="main-container">
+		<div class="flex-container">
+			<div id="flex-items">
+			<!-- Insert content here -->
+			</div>
+		</div>
+	</div>
+	<script src="handlebars-v4.0.5.js"></script>
+	<script type="text/template" id="recipe-template">
+		<div class="flex-item">
+			<div class="r-data-right">
+				<h2 class="r-title">{{ label }}</h2>
+			</div>
+		</div>
+	</script>
+	<script src="script.js"></script>
+
+	<!-- <div id="content"></div>
+	<script src="handlebars-v4.0.5.js"></script>
+	<script type="text/template" id="ptemplate">
+		<h1> {{ title }} </h1>
+		<ul class="people">
+			{{#people}}
+			<li class="person">
+				<h3>{{name}}</h3>
+			</li>
+			{{/people}}
+		</ul>
+	</script>
+	<script src="script.js"></script> -->
+</body>
+</html>
