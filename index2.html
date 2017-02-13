@@ -67,25 +67,6 @@
 			<button class="search-button" id="search">Search</button>
 		</div>
 	</div>
-
-	<!-- Main Content
-	<div class="main-container">
-		<div class="flex-container">
-			<div class="flex-item template">
-				<div class="r-data-left">
-					<img src="" alt="" class="r-img">
-				</div>
-				<div class="r-data-right">
-					<h2 class="r-title"></h2>
-					<p class="r-ingredients"></p>
-					<p class="text">Serves:&nbsp;</p><span class="r-servings"></span>
-					<p class="text source-text">Source: &nbsp;</p><a href="#" class="link" target="_blank"><span class="r-source"></span></a>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
-
 	<div class="main-container">
 		<div class="flex-container">
 			<div id="flex-items">
@@ -96,25 +77,17 @@
 	<script src="handlebars-v4.0.5.js"></script>
 	<script type="text/template" id="recipe-template">
 		<div class="flex-item">
+			<div class="r-data-left">
+				<img src="{{ image }}" alt="" class="r-img">
+			</div>
 			<div class="r-data-right">
 				<h2 class="r-title">{{ label }}</h2>
+				<p class="r-ingredients">{{ingredients}}</p>
+				<p class="text">Serves:&nbsp;</p><span class="r-servings">{{servings}}</span>
+				<p class="text source-text">Source: &nbsp;</p><a href="{{url}}" class="link" target="_blank"><span class="r-source">{{source}}</span></a>
 			</div>
 		</div>
 	</script>
 	<script src="script.js"></script>
-
-	<!-- <div id="content"></div>
-	<script src="handlebars-v4.0.5.js"></script>
-	<script type="text/template" id="ptemplate">
-		<h1> {{ title }} </h1>
-		<ul class="people">
-			{{#people}}
-			<li class="person">
-				<h3>{{name}}</h3>
-			</li>
-			{{/people}}
-		</ul>
-	</script>
-	<script src="script.js"></script> -->
 </body>
 </html>

@@ -3,6 +3,8 @@ $(document).ready(function(){
 	var diettext = '';
 	var key = '';
 	var recipes = [];
+	var returnedItems = $('#flex-items');
+	var template = Handlebars.compile($('#recipe-template').html());
 	//Grabs dropdown menu items and updates dropdown button text
 	$('.dropdown-item').click(function(){
 		if($(this).parent().hasClass('js-health')){
@@ -30,9 +32,22 @@ $(document).ready(function(){
 			return 'Wrong health/diet restrction';
 	}
 
-	function forEachFunc(item, index, array){
-		recipes.push(array[index].recipe);
+	function addRecipeObj(item, index, array){
+		recipes.push({
+			'label': array[index].recipe.label,
+			'image': array[index].recipe.image,
+			'ingredients': array[index].recipe.ingredients,
+			'servings': array[index].recipe.yield,
+			'source': array[index].recipe.source,
+		});
 	};
+
+	function pushToDom(item, index, array){
+		var singleRecipe = item;
+		for(var x = 0; x < array.length; x++){
+			returnedItems.html(template(singleRecipe));
+		}
+	}
 
 	$('#search').click(function(){
 		var url ='https://api.edamam.com/search?api_id=bc8cbf59&api_key=ecf7fb85c3b186ae3ea428fbc209fa4c';
@@ -48,31 +63,8 @@ $(document).ready(function(){
 		}).done(function(result){
 			//Get the objects that contain the recipes which are under the hits node
 			var data = result.hits;
-			data.forEach(forEachFunc);
-			var returnedItems = $('#flex-items');
-			var template = Handlebars.compile($('#recipe-template').html());
-			returnedItems.html(template(recipes);
+			data.forEach(addRecipeObj);
+			recipes.forEach(pushToDom);
 		})
 	});
-
-
-	// var content = $('#content');
-	// var data = {
-	// 	title: "People List",
-	// 	people: [
-	// 		{
-	// 			name: 'John'
-	// 		},
-	// 		{
-	// 			name: 'Froy'
-	// 		},
-	// 		{
-	// 			name: 'Nancy'
-	// 		}
-	// 	]
-	// };
-
-	// var template = Handlebars.compile($('#ptemplate').html());
-	// content.html(template(data));
-
 })
