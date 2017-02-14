@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>What To Cook?</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -20,7 +21,6 @@
 			<div class="dropdown">
 				<button class="dropdown-button health-button"><span id="health-text">Health Restrictions</span> &darr;</button>
 				<div class="dropdown-content js-health">
-					<div class="dropdown-item">None</div>
 					<div class="dropdown-item">Alcohol-free</div>
 					<div class="dropdown-item">Celery-free</div>
 					<div class="dropdown-item">Crustcean-free</div>
@@ -34,6 +34,7 @@
 					<div class="dropdown-item">Mustard-free</div>
 					<div class="dropdown-item">Low-fat-abs</div>
 					<div class="dropdown-item">No-oil-added</div>
+					<div class="dropdown-item">None</div>
 					<div class="dropdown-item">Paleo</div>
 					<div class="dropdown-item">Peanut-free</div>
 					<div class="dropdown-item">Pecatarian</div>
@@ -60,6 +61,7 @@
 					<div class="dropdown-item">Low-carb</div>
 					<div class="dropdown-item">Low-fat</div>
 					<div class="dropdown-item">Low-sodium</div>
+					<div class="dropdown-item">None</div>
 				</div>
 			</div>
 		</div>
@@ -67,26 +69,33 @@
 			<button class="search-button" id="search">Search</button>
 		</div>
 	</div>
+
 	<div class="main-container">
-		<div class="flex-container">
-			<div id="flex-items">
+		<h2 class="main-header">Recipes:</h2>
+		<div class="flex-container" id="container">
 			<!-- Insert content here -->
-			</div>
 		</div>
 	</div>
+
 	<script src="handlebars-v4.0.5.js"></script>
 	<script type="text/template" id="recipe-template">
-		<div class="flex-item">
-			<div class="r-data-left">
-				<img src="{{ image }}" alt="" class="r-img">
+		{{#each this}}
+			<div class="flex-item">
+				<div class="r-data-left">
+					<img src="{{ image }}" alt="" class="r-img">
+				</div>
+				<div class="r-data-right">
+					<h2 class="r-title">{{ label }}</h2>
+					<ol class="item-list">
+						{{#each ingredients}}
+							<li class="r-ingredients">{{ text }}</li>
+						{{/each}}
+					</ol>
+					<p class="text">Serves:&nbsp;</p><span class="r-servings">{{ servings }}</span>
+					<p class="text source-text">Source: &nbsp;<a href="{{ url }}" class="link" target="_blank"><span class="r-source">{{ source }}</span></a></p>
+				</div>
 			</div>
-			<div class="r-data-right">
-				<h2 class="r-title">{{ label }}</h2>
-				<p class="r-ingredients">{{ingredients}}</p>
-				<p class="text">Serves:&nbsp;</p><span class="r-servings">{{servings}}</span>
-				<p class="text source-text">Source: &nbsp;</p><a href="{{url}}" class="link" target="_blank"><span class="r-source">{{source}}</span></a>
-			</div>
-		</div>
+		{{/each}}
 	</script>
 	<script src="script.js"></script>
 </body>

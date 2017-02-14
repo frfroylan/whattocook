@@ -2,6 +2,8 @@ body{font-family: 'Roboto', arial;}
 .header{
 	text-align: center;
 }
+
+/*******************************Top search section **/
 .top-flex{
 	display: flex;
 	flex-flow: row nowrap;
@@ -48,7 +50,9 @@ input{
 .dropdown-content:hover{
 	display: block;
 	height: 200px;
-	overflow: scroll;
+	overflow-x: none;
+	overflow-y: scroll;
+
 }
 .dropdown-item:hover{
 	cursor: pointer;
@@ -69,13 +73,9 @@ input{
 	background-color: #2980b9;
 	cursor: pointer;
 }
-.template{
-	display: none;
-}
+/***************************   /Top search section*/
 
-
-
-
+/***********************************Main Content*/
 .flex-container{
 	display: flex;
 	flex-flow: row wrap;
@@ -101,7 +101,6 @@ input{
 }
 .r-data-right{
 	width: 60%;
-	padding: 10px;
 	overflow-x: none;
 	overflow-y: scroll;
 }
@@ -114,6 +113,7 @@ input{
 	font-weight: 500;
 	font-size: 20px;
 	line-height: 24px;
+	padding-left: 10px;
 }
 .r-ingredients,
 .r-servings,
@@ -126,19 +126,101 @@ input{
 .text{
 	font-weight: 500;
 	display: inline-block;
+	padding-left: 10px;
 }
 .r-ingredients{
 	padding: 5px;
-}
-#template{
-	display: none;
 }
 .item-list{
 	margin-left: 15px;
 }
 .source-text{
-	margin-left: 40px;
+	margin-left: 10px;
 }
 .main-container{
-	margin: 20px;
+	width: 1170px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.main-header{
+	margin-top: 20px;
+	display: none;
+}
+
+@media (min-width: 0px) and (max-width: 320px) {
+	.header{font-size: 28px;}
+	.top-flex{
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		width: 100%;
+	}
+	.top-flex-item{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.main-container{
+		width: 100%;
+		margin: 0px;
+	}
+	.flex-container{
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		width: 100%;
+		height: auto;
+	}
+	.flex-item{
+		display: flex;
+		flex-flow: column nowrap;
+		width: 100%;
+		height: auto;
+		margin: 0px;
+	}
+	.r-data-left{
+		width: 100%;
+	}
+	.r-data-right{
+		width: 100%;
+		overflow-x: none;
+		overflow-y: scroll;
+	}
+}
+@media  (min-width: 321px) and (max-width: 768px;) {
+	.top-flex{
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		width: 100%;
+	}
+	.top-flex-item{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.main-container{
+		width: 100%;
+		margin: 0px;
+	}
+	.flex-container{
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		width: 100%;
+		height: auto;
+	}
+	.flex-item{
+		display: flex;
+		flex-flow: column nowrap;
+		width: 100%;
+		height: auto;
+		margin: 0px;
+	}
+	.r-data-left{
+		width: 100%;
+	}
+	.r-data-right{
+		width: 100%;
+		overflow-x: none;
+		overflow-y: scroll;
+	}
 }
